@@ -43,6 +43,12 @@
  #define CPPTRACE_FORCE_NO_INLINE __attribute__((noinline))
 #endif
 
+#if defined(__cpp_rtti) || defined(_CPPRTTI)
+ #define CPPTRACE_HAS_RTTI 1
+#else
+ #define CPPTRACE_HAS_RTTI 0
+#endif
+
 #ifdef _MSC_VER
 #pragma warning(push)
 // warning C4251: using non-dll-exported type in dll-exported type, firing on std::vector<frame_ptr> and others for some

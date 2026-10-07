@@ -69,13 +69,13 @@ CPPTRACE_BEGIN_NAMESPACE
             microfmt::print(
                 stderr,
                 "Terminate called after throwing an instance of {}: {}\n",
-                demangle(typeid(e).name()),
+                detail::caught_exception_type_name(e),
                 e.message()
             );
             e.trace().print(std::cerr, isatty(stderr_fileno));
         } catch(std::exception& e) {
             microfmt::print(
-                stderr, "Terminate called after throwing an instance of {}: {}\n", demangle(typeid(e).name()), e.what()
+                stderr, "Terminate called after throwing an instance of {}: {}\n", detail::caught_exception_type_name(e), e.what()
             );
             print_terminate_trace();
         } catch(...) {

@@ -69,7 +69,7 @@ namespace detail {
         } catch(const std::exception& e) {
             log::error(
                 "Unhandled cpptrace internal error of type {}: {}",
-                cpptrace::demangle(typeid(e).name()),
+                detail::caught_exception_type_name(e),
                 e.what()
             );
         } catch(...) {

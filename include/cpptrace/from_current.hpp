@@ -12,6 +12,10 @@
 #include <cpptrace/basic.hpp>
 #include <cpptrace/from_current_macros.hpp>
 
+#if !CPPTRACE_HAS_RTTI
+ #error "cpptrace/from_current.hpp requires RTTI"
+#endif
+
 CPPTRACE_BEGIN_NAMESPACE
     CPPTRACE_EXPORT const raw_trace& raw_trace_from_current_exception();
     CPPTRACE_EXPORT const stacktrace& from_current_exception();

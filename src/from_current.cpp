@@ -1,4 +1,8 @@
 #include <cpptrace/cpptrace.hpp>
+
+// TRY/CATCH works by rewriting typeinfo, so it is left out of builds without RTTI.
+#if CPPTRACE_HAS_RTTI
+
 #include <cpptrace/from_current.hpp>
 
 #include <cstdint>
@@ -449,3 +453,5 @@ CPPTRACE_BEGIN_NAMESPACE
         detail::saved_rethrow_trace = detail::lazy_trace_holder{raw_trace{}};
     }
 CPPTRACE_END_NAMESPACE
+
+#endif

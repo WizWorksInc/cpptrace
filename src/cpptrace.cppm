@@ -4,7 +4,9 @@ module;
 #include <cpptrace/exceptions.hpp>
 #include <cpptrace/formatting.hpp>
 #include <cpptrace/forward.hpp>
-#include <cpptrace/from_current.hpp>
+#if CPPTRACE_HAS_RTTI
+ #include <cpptrace/from_current.hpp>
+#endif
 
 export module cpptrace;
 
@@ -54,6 +56,7 @@ CPPTRACE_BEGIN_NAMESPACE
     // cpptrace/forward
     export using cpptrace::frame_ptr;
 
+    #if CPPTRACE_HAS_RTTI
     // cpptrace/from_current.hpp
     export using cpptrace::raw_trace_from_current_exception;
     export using cpptrace::from_current_exception;
@@ -74,6 +77,7 @@ CPPTRACE_BEGIN_NAMESPACE
          export using cpptrace::detail::nop;
         #endif
     }
+    #endif
 
     // cpptrace/io
     export using cpptrace::operator<<; // FIXME: make hidden friend
